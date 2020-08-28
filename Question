@@ -1,0 +1,65 @@
+package org.zhrgf.test;
+
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class Question {
+	private List<Coordinate> list;
+	
+	public Question() {
+		this.list = new ArrayList<Coordinate>();
+		for(double i=0.0;i<8;i++) {
+			for(double j=0.0;j<8;j++) {
+				Coordinate x = new Coordinate(i,j);
+				list.add(x);
+			}
+		}
+		
+	}
+	
+	public void click(double a,double b) {
+		for(Coordinate c :this.list) {
+			if((c.getX()==a&&c.getY()==b)||(c.getX()==a-1 && c.getY()==b) || (c.getX()==a+1 && c.getY()==b) || (c.getX()==a&&c.getY()==b-1)|| (c.getX()==a&&c.getY()==b+1)){
+				c.clicked();
+			}
+		}
+	}
+	
+	public List<Coordinate> getList() {
+		return this.list;
+	}
+	/*
+	public void gerer() {
+		for (Coordinate c :this.list) {
+			if (c.getColor()) {
+				this.list.remove(c);
+			}
+		}
+	}
+	*/
+	
+	public String toString() {
+		String msg = "";
+		for(Coordinate c : this.list) {
+			msg+=c.toString();
+		}
+		return msg;
+	}
+	
+	public static void main(String[]args) {
+		Question q1 = new Question();
+		for(int i=0;i<10;i++) {
+		q1.click(new Random().nextInt(8), new Random().nextInt(8));
+		}
+		for(Coordinate c :q1.list) {
+			System.out.println(c.getColor());
+		}
+		//q1.gerer();
+		
+	}
+	
+
+	
+}

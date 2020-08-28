@@ -1,0 +1,57 @@
+package org.zhrgf.test;
+
+import javafx.scene.control.Button;
+
+public class MyButton extends Button {
+	public boolean count;
+	
+	
+	public MyButton () {
+		super();
+		this.count=true;
+		
+	}
+	
+	public boolean getCount() {
+		return count;
+	}
+	
+	public String getColorName() {
+		if(this.getCount()) {
+			return "white";
+			
+		}else {
+			return "black";
+		}
+	}
+	
+	public void pressed() {
+	if(this.count==true) {
+		this.count=false;
+	}else {
+		this.count=true;
+	}
+	}
+	
+	public void setColor() {
+		if(this.getCount()) {
+			this.setStyle("-fx-background-color: white");
+		}else {
+			this.setStyle("-fx-background-color: black");
+		}
+	}
+	
+	public boolean equals(MyButton mb) {
+		return this.getLayoutX()==mb.getLayoutX()&&this.getLayoutY()==mb.getLayoutY();
+	}
+	
+	public String toString() {
+		if(this.getCount()) {
+		return "("+this.getLayoutX()+","+this.getLayoutY()+") WHITE";
+		}else {
+			return "("+this.getLayoutX()+","+this.getLayoutY()+") BLACK";	
+		}
+	}
+	
+	
+}

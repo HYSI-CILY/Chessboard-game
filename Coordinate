@@ -1,0 +1,53 @@
+package org.zhrgf.test;
+
+public class Coordinate {
+	
+		private double x;
+		private double y;
+		private boolean Color;
+		
+		public Coordinate(double a,double b) {
+			this.x=a;
+			this.y=b;
+			this.Color=true;
+		}
+		
+		public double getX() {
+			return this.x;
+		}
+		
+		public double getY() {
+			return this.y;
+		}
+		public boolean getColor() {
+			return this.Color;
+		}
+		
+		public String getColorName() {
+			if(this.getColor()) {
+				return "white";
+			}else {
+				return "black";
+			}
+		}
+		
+		public void clicked() {
+			if(this.getColor()) {
+				this.Color=false;
+			}else {
+				this.Color=true;
+			}
+		}
+		
+		public String toString() {
+			if(this.Color==true) {
+			return "("+this.x+","+this.y+") WHITE";
+			}else {
+				return "("+this.x+","+this.y+") BLACK";
+			}
+		}
+		
+		public boolean equals(Coordinate another) {
+			return this.getX()==another.getX()&&this.getY()==another.getY();
+		}
+}
